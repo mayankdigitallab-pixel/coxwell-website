@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Fraunces } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
+});
+
+const fraunces = Fraunces({
+  variable: "--font-display",
+  subsets: ["latin"],
+  display: "swap",
+  axes: ["opsz", "SOFT"],
 });
 
 const SITE_URL = "https://coxwell-website.vercel.app";
@@ -68,8 +75,8 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} scroll-smooth`}>
-      <body className="min-h-screen antialiased">{children}</body>
+    <html lang="en" className={`${inter.variable} ${fraunces.variable} scroll-smooth`}>
+      <body className="min-h-screen antialiased bg-[#fafaf7] text-[#111110]">{children}</body>
     </html>
   );
 }

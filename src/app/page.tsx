@@ -1,13 +1,13 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import Brief from "@/components/Brief";
 import Products from "@/components/Products";
 import Applications from "@/components/Applications";
-import WhyCoxwell from "@/components/WhyCoxwell";
-import Projects from "@/components/Projects";
-import Specifications from "@/components/Specifications";
-import Clients from "@/components/Clients";
-import Contact from "@/components/Contact";
+import Numbers from "@/components/Numbers";
+import Featured from "@/components/Featured";
+import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import ChatAssistant from "@/components/ChatAssistant";
 
 export default function Home() {
   return (
@@ -15,15 +15,15 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <Clients />
+        <Brief />
         <Products />
         <Applications />
-        <WhyCoxwell />
-        <Projects />
-        <Specifications />
-        <Contact />
+        <Numbers />
+        <Featured />
+        <CTA />
       </main>
       <Footer />
+      <ChatAssistant />
     </>
   );
 }

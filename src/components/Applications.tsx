@@ -1,89 +1,91 @@
-const applications = [
+import Link from "next/link";
+
+const apps = [
   {
+    n: "01",
     title: "Roofing",
-    desc: "Pitched & flat roof systems for commercial, industrial, and residential structures.",
-    icon: "🏠",
-    gradient: "from-blue-50 to-sky-100",
-    accent: "text-blue-600",
+    body: "Long-span polycarbonate roofing for industrial, commercial, and civic projects — from single carports to 30-metre clear-span structures.",
+    stat: "3,200+",
+    statLabel: "roofs delivered",
   },
   {
-    title: "Skylights",
-    desc: "Flush-mounted and ridge skylights that flood interiors with natural, diffused light.",
-    icon: "☀️",
-    gradient: "from-amber-50 to-yellow-100",
-    accent: "text-amber-600",
+    n: "02",
+    title: "Skylights & atriums",
+    body: "Glare-free diffuse daylight for malls, airports, and offices — without the heat or weight of glass.",
+    stat: "62 atria",
+    statLabel: "incl. 4 airports",
   },
   {
-    title: "Atriums",
-    desc: "Large-span transparent enclosures for retail, hospitality, and mixed-use spaces.",
-    icon: "🏛️",
-    gradient: "from-emerald-50 to-teal-100",
-    accent: "text-emerald-600",
+    n: "03",
+    title: "Façades & cladding",
+    body: "Translucent and embossed façade systems for civic and retail buildings. Daylight in, signage out.",
+    stat: "18,000 m²",
+    statLabel: "of cladding in 2024",
   },
   {
-    title: "Façades",
-    desc: "Architectural cladding systems that combine aesthetics with thermal performance.",
-    icon: "🏢",
-    gradient: "from-violet-50 to-purple-100",
-    accent: "text-violet-600",
+    n: "04",
+    title: "Carports & canopies",
+    body: "Heat-blocking polycarbonate canopies for parking, EV chargers, and outdoor seating.",
+    stat: "9 OEM",
+    statLabel: "auto brands specified",
   },
   {
-    title: "Carports",
-    desc: "Stylish, durable cover solutions for parking areas with UV protection.",
-    icon: "🚗",
-    gradient: "from-slate-50 to-gray-100",
-    accent: "text-slate-600",
+    n: "05",
+    title: "Walkways & underpasses",
+    body: "Connected-canopy systems for transit hubs, campuses, and hospitals.",
+    stat: "4,200 m²",
+    statLabel: "interchange canopy",
   },
   {
-    title: "Canopies & Walkways",
-    desc: "Weather-protected pathways and entrance canopies for institutions and campuses.",
-    icon: "🚶",
-    gradient: "from-orange-50 to-amber-100",
-    accent: "text-orange-600",
-  },
-  {
+    n: "06",
     title: "Greenhouses",
-    desc: "Light-optimised growing environments using high-clarity polycarbonate panels.",
-    icon: "🌿",
-    gradient: "from-green-50 to-lime-100",
-    accent: "text-green-600",
-  },
-  {
-    title: "Industrial Roofing",
-    desc: "Heavy-duty translucent roofing for factories, warehouses, and logistics parks.",
-    icon: "🏭",
-    gradient: "from-red-50 to-rose-100",
-    accent: "text-red-600",
+    body: "Diffuse multiwall systems for controlled-environment agriculture, with engineered thermal break.",
+    stat: "27",
+    statLabel: "commercial nurseries",
   },
 ];
 
 export default function Applications() {
   return (
-    <section id="applications" className="py-24 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <span className="text-amber-500 font-semibold text-sm uppercase tracking-widest">
-            Where We Shine
-          </span>
-          <h2 className="mt-3 text-4xl sm:text-5xl font-bold text-slate-900">
-            Built for Every Application
-          </h2>
-          <p className="mt-4 text-lg text-slate-500 max-w-xl mx-auto">
-            From greenhouses to metro stations — Coxwell systems perform reliably across
-            the widest range of building types.
-          </p>
+    <section id="applications" className="py-24 lg:py-32 px-6 lg:px-10 border-t border-[#d9d6cc]">
+      <div className="max-w-[1280px] mx-auto">
+        <div className="grid lg:grid-cols-12 gap-10 mb-16">
+          <div className="lg:col-span-4">
+            <p className="label text-[#4a4a47]">D — Applications</p>
+            <h2 className="mt-6 font-display text-4xl lg:text-5xl leading-[1.05] text-[#111110]">
+              Wherever daylight matters.
+            </h2>
+          </div>
+          <div className="lg:col-span-7 lg:col-start-6">
+            <p className="text-[#4a4a47] text-lg leading-relaxed">
+              From metro interchanges to research greenhouses, Coxwell systems perform across the
+              widest range of building types in India. Six categories. Twenty-seven states. Three decades.
+            </p>
+          </div>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          {applications.map((app) => (
-            <div
-              key={app.title}
-              className={`p-6 rounded-2xl bg-gradient-to-br ${app.gradient} hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-default`}
+        <div className="border-t border-[#d9d6cc]">
+          {apps.map((a) => (
+            <Link
+              key={a.n}
+              href={`/applications#${a.title.toLowerCase().replace(/\s|&/g, "-")}`}
+              className="group block border-b border-[#d9d6cc] py-8 lg:py-10 hover:bg-[#f1ede4] transition-colors -mx-6 px-6 lg:-mx-10 lg:px-10"
             >
-              <div className="text-3xl mb-3">{app.icon}</div>
-              <h3 className={`font-bold text-lg mb-1 ${app.accent}`}>{app.title}</h3>
-              <p className="text-slate-600 text-sm leading-relaxed">{app.desc}</p>
-            </div>
+              <div className="grid lg:grid-cols-12 items-center gap-6">
+                <div className="lg:col-span-1 flex items-baseline gap-2">
+                  <span className="font-display text-2xl text-[#111110]">{a.n}</span>
+                  <span className="label text-[#4a4a47]">/ 06</span>
+                </div>
+                <h3 className="lg:col-span-3 font-display text-2xl lg:text-3xl text-[#111110]">
+                  {a.title}
+                </h3>
+                <p className="lg:col-span-5 text-[#4a4a47] leading-relaxed">{a.body}</p>
+                <div className="lg:col-span-3 lg:text-right">
+                  <p className="font-display text-2xl text-[#111110]">{a.stat}</p>
+                  <p className="label text-[#4a4a47] mt-1">{a.statLabel}</p>
+                </div>
+              </div>
+            </Link>
           ))}
         </div>
       </div>

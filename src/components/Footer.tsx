@@ -1,55 +1,47 @@
-import Image from "next/image";
 import Link from "next/link";
 
-const links = {
-  Products: ["Prism", "Vivid", "Snapwall", "Multicell", "X-Fix", "Static", "Spry"],
-  Applications: ["Roofing", "Skylights", "Atriums", "Façades", "Carports", "Canopies"],
-  Resources: ["Product Specs", "CAD Details", "Installation Guide", "Warranty", "Press", "Careers"],
-  Company: ["About Us", "Projects", "Contact", "Privacy Policy"],
+const groups = {
+  Products: ["Prism", "Vivid", "Snapwall", "Multicell", "X-Fix", "All products"],
+  Applications: ["Roofing", "Skylights & atriums", "Façades", "Walkways", "Greenhouses"],
+  Resources: ["Spec sheets", "Certifications", "CAD details", "Installation guides", "Warranty"],
+  Company: ["About", "Projects", "Press", "Careers", "Contact"],
 };
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-950 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-10">
-          <div className="col-span-2">
-            <Image
-              src="/images/Logo-white-01-1536x443.png"
-              alt="Coxwell"
-              width={140}
-              height={40}
-              className="h-9 w-auto mb-4"
-            />
-            <p className="text-slate-400 text-sm leading-relaxed max-w-xs">
-              Daylight is the heart of every space we build. India's premier polycarbonate
-              roofing systems since 1995.
+    <footer className="border-t border-[#d9d6cc] bg-[#fafaf7]">
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-10 py-16 lg:py-20">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 mb-16">
+          <div className="lg:col-span-4">
+            <div className="font-display text-3xl text-[#111110]">Coxwell</div>
+            <p className="mt-4 text-[#4a4a47] leading-relaxed max-w-sm">
+              Polycarbonate systems for roofing, atriums, façades, and walkways.
+              Engineered in India since 1995.
             </p>
-            <div className="mt-6 flex gap-3">
-              {["LinkedIn", "Twitter/X", "YouTube"].map((s) => (
-                <a
-                  key={s}
-                  href="#"
-                  className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-slate-400 hover:bg-amber-500/20 hover:text-amber-400 transition-colors text-xs font-bold"
-                >
-                  {s[0]}
-                </a>
-              ))}
+            <div className="mt-6">
+              <p className="label text-[#4a4a47]">Engineering brief</p>
+              <a href="mailto:specify@coxwell.in" className="mt-1 inline-block text-[#111110] underline underline-offset-4">
+                specify@coxwell.in
+              </a>
+            </div>
+            <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-sm text-[#4a4a47]">
+              <span>Gurgaon</span>
+              <span>·</span>
+              <span>Delhi</span>
+              <span>·</span>
+              <span>Bengaluru</span>
             </div>
           </div>
 
-          {Object.entries(links).map(([category, items]) => (
-            <div key={category}>
-              <h4 className="font-semibold text-white mb-4 text-sm">{category}</h4>
-              <ul className="space-y-2.5">
+          {Object.entries(groups).map(([title, items]) => (
+            <div key={title} className="lg:col-span-2">
+              <p className="label text-[#4a4a47]">{title}</p>
+              <ul className="mt-5 space-y-2.5">
                 {items.map((item) => (
                   <li key={item}>
-                    <a
-                      href="#"
-                      className="text-slate-400 text-sm hover:text-amber-400 transition-colors"
-                    >
+                    <Link href="#" className="text-sm text-[#111110] hover:underline underline-offset-4">
                       {item}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -57,19 +49,12 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-slate-500 text-sm">
-            © {new Date().getFullYear()} Coxwell. All rights reserved.
-          </p>
-          <div className="flex items-center gap-4 text-slate-500 text-sm">
-            <span className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse" />
-              IS 14434 Certified
-            </span>
-            <span>·</span>
-            <span>LEED Compatible</span>
-            <span>·</span>
-            <span>10-Year Warranty</span>
+        <div className="pt-8 border-t border-[#d9d6cc] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-sm text-[#4a4a47]">
+          <p>© 1995–{new Date().getFullYear()} Coxwell Global Pvt. Ltd.</p>
+          <div className="flex gap-6">
+            <Link href="#" className="hover:text-[#111110]">Terms</Link>
+            <Link href="#" className="hover:text-[#111110]">Privacy</Link>
+            <Link href="/sitemap.xml" className="hover:text-[#111110]">Sitemap</Link>
           </div>
         </div>
       </div>
