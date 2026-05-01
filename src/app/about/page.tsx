@@ -1,98 +1,130 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import ChatAssistant from "@/components/ChatAssistant";
-import CTA from "@/components/CTA";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About — Engineer-led since 1995",
-  description: "Privately held, founder-led polycarbonate manufacturer. 280+ engineers, 3 plants, 5,200+ projects across 27 states.",
+  title: "About — Coxwell",
+  description: "30 years of engineered daylight in Indian architecture.",
 };
-
-const timeline = [
-  { year: "1995", body: "Founded with six engineers and a single extruder in North India." },
-  { year: "2003", body: "First airport canopy specification — 6,400 m² of multiwall, still in service." },
-  { year: "2011", body: "Second plant. X-Fix and Spry product lines introduced." },
-  { year: "2018", body: "First Indian polycarbonate manufacturer with LEED-aligned EPDs across the full range." },
-  { year: "2025", body: "Innovative range launched — Prism, Vivid, and Snapwall." },
-];
 
 export default function AboutPage() {
   return (
     <>
-      <Navbar />
-      <main>
-        <section className="pt-40 pb-16 px-6 lg:px-10">
-          <div className="max-w-[1280px] mx-auto">
-            <p className="label text-[#4a4a47]">About</p>
-            <h1 className="mt-6 font-display text-5xl lg:text-7xl leading-[1.05] text-[#111110] max-w-4xl">
-              An engineer-led practice. Privately held since 1995.
-            </h1>
+      <section className="pagehead">
+        <div className="container">
+          <div className="crumb">
+            <Link href="/">Home</Link>
+            <span>/</span>
+            <span>About</span>
           </div>
-        </section>
+          <div className="head-grid">
+            <h1>30 years of daylight.</h1>
+            <p className="lead">
+              Coxwell was founded in 1995 to revolutionise how Indian buildings handle daylight.
+              Three decades on, our panels sit on airports, stadiums, atriums, and walkways across
+              27 states — and we&apos;re still privately held, still engineer-led.
+            </p>
+          </div>
+        </div>
+      </section>
 
-        <section className="px-6 lg:px-10 border-t border-[#d9d6cc] py-16 lg:py-24">
-          <div className="max-w-[1280px] mx-auto grid lg:grid-cols-12 gap-10">
-            <div className="lg:col-span-4">
-              <p className="label text-[#4a4a47]">The premise</p>
+      <section className="section">
+        <div className="container">
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64 }} className="about-grid">
+            <div className="pic pic-cool stripes-h" style={{ aspectRatio: "4/5", position: "relative" }}>
+              <div className="tile-overlay" style={{ padding: 24 }}>
+                <span>FIG. 01 · Coxwell HQ · Gurgaon</span>
+                <span />
+              </div>
             </div>
-            <div className="lg:col-span-8">
-              <p className="font-display text-3xl lg:text-4xl leading-[1.15] text-[#111110]">
-                We were founded on the idea that daylight is the most underused material in Indian architecture —
-                and that delivery should match the engineering rigour of structural systems.
+            <div className="stack" style={{ gap: 24, justifyContent: "center" }}>
+              <span className="idx">Our story</span>
+              <p style={{ fontFamily: "var(--font-display)", fontSize: "clamp(22px, 2.4vw, 32px)", lineHeight: 1.25, fontWeight: 400, margin: 0, letterSpacing: "-0.005em" }}>
+                We founded Coxwell on the belief that daylight is the most underused material in
+                Indian architecture — and that the panel that delivers it should be as well-engineered
+                as the steel that holds it up.
               </p>
-              <p className="mt-6 text-[#4a4a47] leading-relaxed">
-                Three decades on, that premise still shapes the practice. We remain founder-led with no external
-                ownership. Each panel is biennially tested, individually certified, and stamped per installation.
+              <p style={{ color: "var(--fg-2)", margin: 0, fontSize: 16, lineHeight: 1.5 }}>
+                From a small extrusion workshop to multiple plants and 5,200+ projects, we&apos;ve stayed
+                engineer-led, biennially tested, and outcome-focused. Every panel that leaves us is
+                sized, certified, and stamped against a real installation — not a generic SKU.
               </p>
+              <Link className="btn btn-outline" style={{ alignSelf: "flex-start" }} href="/contact">
+                Visit a Coxwell plant →
+              </Link>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="px-6 lg:px-10 border-t border-[#d9d6cc] py-16 lg:py-24 bg-[#f1ede4]">
-          <div className="max-w-[1280px] mx-auto grid lg:grid-cols-12 gap-10">
-            <div className="lg:col-span-4">
-              <p className="label text-[#4a4a47]">Operations</p>
+      <section className="section subtle tight">
+        <div className="container">
+          <div className="section-head">
+            <div>
+              <span className="idx">Timeline</span>
+              <h2>Three decades, in milestones.</h2>
             </div>
-            <div className="lg:col-span-8 grid sm:grid-cols-2 gap-px bg-[#d9d6cc] border border-[#d9d6cc]">
-              {[
-                { value: "3", label: "manufacturing plants in North India" },
-                { value: "280+", label: "engineers, technicians, and field staff" },
-                { value: "27", label: "Indian states with active installations" },
-                { value: "2,755+", label: "architects, OEMs, and contractors" },
-              ].map((s) => (
-                <div key={s.label} className="bg-[#fafaf7] p-8 lg:p-10">
-                  <p className="font-display text-5xl lg:text-6xl tracking-tight text-[#111110]">{s.value}</p>
-                  <p className="mt-3 text-[#4a4a47]">{s.label}</p>
-                </div>
-              ))}
+            <p className="meta">
+              A short history of Coxwell — from the first extrusion workshop to today&apos;s plants and
+              the launch of the Innovative range.
+            </p>
+          </div>
+          <div style={{ borderTop: "1px solid var(--border)" }}>
+            {[
+              ["1995", "Founded", "Six engineers, one extruder, and a small workshop. The first Coxwell panel ships to a residential carport."],
+              ["2003", "First airport canopy", "Coxwell is specified for a major domestic terminal canopy — 6,400 m² of multiwall."],
+              ["2011", "Plant 2", "A second plant brings capacity to 12,000 m² per day and unlocks the X-Fix and Spry product families."],
+              ["2018", "LEED programme", "Coxwell becomes the first Indian polycarbonate manufacturer with LEED-aligned EPDs across the full product range."],
+              ["2025", "Innovative range", "30 years and 5,200+ projects in: Coxwell launches Prism, Vivid, and Snapwall — a new generation of climate-control panels."],
+            ].map(([y, t, d]) => (
+              <div key={y} style={{ display: "grid", gridTemplateColumns: "140px 1fr 2fr", gap: 48, padding: "28px 0", borderBottom: "1px solid var(--border)", alignItems: "baseline" }} className="tl-row">
+                <span style={{ fontFamily: "var(--font-display)", fontWeight: 500, fontSize: 28, color: "var(--accent)" }}>{y}</span>
+                <strong style={{ fontFamily: "var(--font-display)", fontWeight: 500, fontSize: 20, lineHeight: 1.15 }}>{t}</strong>
+                <p style={{ margin: 0, color: "var(--fg-2)", lineHeight: 1.5, fontSize: 15 }}>{d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section dark tight">
+        <div className="container">
+          <div className="section-head">
+            <div>
+              <span className="idx" style={{ color: "rgba(255,255,255,.45)" }}>
+                Today
+              </span>
+              <h2 style={{ color: "#fff" }}>What we look like, in numbers.</h2>
             </div>
           </div>
-        </section>
-
-        <section className="px-6 lg:px-10 border-t border-[#d9d6cc] py-16 lg:py-24">
-          <div className="max-w-[1280px] mx-auto grid lg:grid-cols-12 gap-10">
-            <div className="lg:col-span-4">
-              <p className="label text-[#4a4a47]">Timeline</p>
-              <h2 className="mt-6 font-display text-3xl lg:text-4xl leading-[1.1] text-[#111110]">
-                Five moments that shaped the practice.
-              </h2>
+          <div className="statgrid">
+            <div className="stat accent">
+              <div className="n">3</div>
+              <p className="l">Manufacturing plants across North India.</p>
             </div>
-            <ol className="lg:col-span-8 border-t border-[#d9d6cc]">
-              {timeline.map((t) => (
-                <li key={t.year} className="py-6 border-b border-[#d9d6cc] grid grid-cols-12 gap-6">
-                  <span className="col-span-3 font-display text-2xl text-[#111110]">{t.year}</span>
-                  <p className="col-span-9 text-[#4a4a47] leading-relaxed">{t.body}</p>
-                </li>
-              ))}
-            </ol>
+            <div className="stat">
+              <div className="n">
+                280<span className="unit">+</span>
+              </div>
+              <p className="l">Coxwell engineers, technicians, and field staff.</p>
+            </div>
+            <div className="stat">
+              <div className="n">
+                2,755<span className="unit">+</span>
+              </div>
+              <p className="l">Clients served — architects, OEMs, and contractors.</p>
+            </div>
+            <div className="stat">
+              <div className="n">
+                100<span className="unit">%</span>
+              </div>
+              <p className="l">Privately held. Still founder-led.</p>
+            </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <CTA />
-      </main>
-      <Footer />
-      <ChatAssistant />
+      <style>{`@media (max-width:920px){ .about-grid { grid-template-columns: 1fr !important; } .tl-row { grid-template-columns: 1fr !important; gap: 8px !important; } }`}</style>
     </>
   );
 }
+

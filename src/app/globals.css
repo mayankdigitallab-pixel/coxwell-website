@@ -1,58 +1,8 @@
-@import "tailwindcss";
-
-:root {
-  --bg: #fafaf7;
-  --bg-cream: #f1ede4;
-  --ink: #111110;
-  --ink-soft: #4a4a47;
-  --rule: #d9d6cc;
-  --accent: #6b5d4a;
-}
-
-@theme inline {
-  --color-bg: var(--bg);
-  --color-bg-cream: var(--bg-cream);
-  --color-ink: var(--ink);
-  --color-ink-soft: var(--ink-soft);
-  --color-rule: var(--rule);
-  --color-accent: var(--accent);
-  --font-sans: var(--font-inter);
-  --font-display: var(--font-display);
+html,
+body {
+  height: 100%;
 }
 
 body {
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--font-inter), system-ui, sans-serif;
-  font-feature-settings: "ss01", "cv11";
+  min-height: 100%;
 }
-
-html {
-  scroll-behavior: smooth;
-}
-
-section[id] {
-  scroll-margin-top: 80px;
-}
-
-::selection {
-  background: var(--ink);
-  color: var(--bg);
-}
-
-.font-display {
-  font-family: var(--font-display), Georgia, serif;
-  font-feature-settings: "ss01";
-  letter-spacing: -0.02em;
-}
-
-.label {
-  font-family: var(--font-inter), sans-serif;
-  font-size: 0.75rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  font-weight: 500;
-}
-
-.rule-top { border-top: 1px solid var(--rule); }
-.rule-bottom { border-bottom: 1px solid var(--rule); }

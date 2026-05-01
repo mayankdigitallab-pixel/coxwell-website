@@ -1,73 +1,81 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import ChatAssistant from "@/components/ChatAssistant";
-import ContactForm from "@/components/ContactForm";
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ContactForm } from "@/components/contact/ContactForm";
 
 export const metadata: Metadata = {
-  title: "Contact — Send us a brief",
-  description: "Send a project brief and receive an engineering response within 24 hours.",
+  title: "Contact — Coxwell",
+  description: "Send your brief. Engineering response within 24 hours.",
 };
 
 export default function ContactPage() {
   return (
     <>
-      <Navbar />
-      <main>
-        <section className="pt-40 pb-12 px-6 lg:px-10">
-          <div className="max-w-[1280px] mx-auto">
-            <p className="label text-[#4a4a47]">Contact</p>
-            <h1 className="mt-6 font-display text-5xl lg:text-7xl leading-[1.05] text-[#111110] max-w-4xl">
-              Send us a brief.
-            </h1>
-            <p className="mt-6 text-lg text-[#4a4a47] max-w-2xl">
-              Our engineering team responds to every project enquiry within 24 hours.
+      <section className="pagehead">
+        <div className="container">
+          <div className="crumb">
+            <Link href="/">Home</Link>
+            <span>/</span>
+            <span>Contact</span>
+          </div>
+          <div className="head-grid">
+            <h1>Start a project.</h1>
+            <p className="lead">
+              Send us your brief — drawings, area, application, and a target date. Our engineering
+              team will respond with a scoped quote within 24 hours.
             </p>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="px-6 lg:px-10 border-t border-[#d9d6cc] py-16 lg:py-24">
-          <div className="max-w-[1280px] mx-auto grid lg:grid-cols-12 gap-10 lg:gap-16">
-            <div className="lg:col-span-4">
-              <div className="space-y-10">
-                <div>
-                  <p className="label text-[#4a4a47]">Engineering</p>
-                  <a href="mailto:specify@coxwell.in" className="mt-2 block font-display text-2xl text-[#111110] hover:underline underline-offset-4">
-                    specify@coxwell.in
-                  </a>
-                  <p className="mt-1 text-sm text-[#4a4a47]">24-hour response.</p>
-                </div>
-                <div>
-                  <p className="label text-[#4a4a47]">Distributors</p>
-                  <a href="mailto:partners@coxwell.in" className="mt-2 block font-display text-2xl text-[#111110] hover:underline underline-offset-4">
-                    partners@coxwell.in
-                  </a>
-                </div>
-                <div>
-                  <p className="label text-[#4a4a47]">Press</p>
-                  <a href="mailto:press@coxwell.in" className="mt-2 block font-display text-2xl text-[#111110] hover:underline underline-offset-4">
-                    press@coxwell.in
-                  </a>
-                </div>
-                <div>
-                  <p className="label text-[#4a4a47]">Headquarters</p>
-                  <p className="mt-2 text-[#111110] leading-relaxed">
-                    Coxwell Global Pvt. Ltd.<br />
-                    1005, Level 10, JMD Regent Square<br />
-                    Mehrauli–Gurgaon Road<br />
-                    Gurgaon 122002, Haryana
-                  </p>
-                </div>
+      <section className="section tight">
+        <div className="container">
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: 64 }} className="contact-grid">
+            <div className="stack" style={{ gap: 32 }}>
+              <div>
+                <span className="eyebrow">Engineering enquiries</span>
+                <p style={{ fontFamily: "var(--font-display)", fontSize: 24, lineHeight: 1.2, margin: "8px 0 0" }}>
+                  specify@coxwell.in
+                </p>
+                <p style={{ color: "var(--fg-2)", fontSize: 14, margin: "4px 0 0" }}>
+                  Architects, contractors, MEP. Response within 24h.
+                </p>
+              </div>
+              <div>
+                <span className="eyebrow">Distributor enquiries</span>
+                <p style={{ fontFamily: "var(--font-display)", fontSize: 24, lineHeight: 1.2, margin: "8px 0 0" }}>
+                  partners@coxwell.in
+                </p>
+                <p style={{ color: "var(--fg-2)", fontSize: 14, margin: "4px 0 0" }}>
+                  Apply to become a Coxwell distributor.
+                </p>
+              </div>
+              <div>
+                <span className="eyebrow">Press</span>
+                <p style={{ fontFamily: "var(--font-display)", fontSize: 24, lineHeight: 1.2, margin: "8px 0 0" }}>
+                  press@coxwell.in
+                </p>
+              </div>
+              <div style={{ borderTop: "1px solid var(--border)", paddingTop: 32, marginTop: 8 }}>
+                <span className="eyebrow">Headquarters</span>
+                <p style={{ margin: "10px 0 0", fontSize: 15, lineHeight: 1.45, color: "var(--fg-2)" }}>
+                  Coxwell Global Pvt. Ltd.
+                  <br />
+                  1005, Level 10, JMD Regent Square,
+                  <br />
+                  Mehrauli Gurgaon Road,
+                  <br />
+                  Gurgaon‑122002, Haryana
+                </p>
               </div>
             </div>
-            <div className="lg:col-span-8">
-              <ContactForm />
-            </div>
+
+            <ContactForm />
           </div>
-        </section>
-      </main>
-      <Footer />
-      <ChatAssistant />
+        </div>
+      </section>
+
+      <style>{`@media (max-width:920px){ .contact-grid { grid-template-columns: 1fr !important; } }`}</style>
     </>
   );
 }
+

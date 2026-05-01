@@ -16,7 +16,6 @@ const tabs = [
       "Optimize light, insulation, and sustainability in every design.",
       "Get end-to-end expert support — from ideation to execution.",
     ],
-    href: "/about",
     image: "/images/Architect.png",
   },
   {
@@ -30,7 +29,6 @@ const tabs = [
       "Customized lengths & tailored sizes per site requirements at no extra cost.",
       "Simplified procurement with ready inventory and flexible payment terms.",
     ],
-    href: "/about",
     image: "/images/contractor.png",
   },
   {
@@ -45,7 +43,6 @@ const tabs = [
       "Ideal for public and private infrastructure projects.",
       "15-year warranty on all Coxwell products.",
     ],
-    href: "/about",
     image: "/images/Developer.png",
   },
 ];
@@ -55,63 +52,40 @@ export default function ExpertTabs() {
   const tab = tabs.find((t) => t.id === active)!;
 
   return (
-    <section
-      className="py-20 overflow-hidden"
-      style={{ background: "linear-gradient(90deg, #2a0e09, #1b0705)", transform: "skewY(-3deg)" }}
-    >
-      <div className="max-w-[1300px] mx-auto px-6 lg:px-10 flex flex-col lg:flex-row gap-10 items-center" style={{ transform: "skewY(3deg)" }}>
+    <section className="section dark" style={{ overflow: "hidden" }}>
+      <div className="container" style={{ display: "flex", gap: "clamp(32px,5vw,80px)", flexWrap: "wrap", alignItems: "center" }}>
         {/* Left */}
-        <div className="flex-1 text-white">
-          <p className="text-[#e25f44] text-sm font-semibold mb-3">We work with</p>
-          <h2 className="text-3xl lg:text-4xl font-bold mb-6 leading-tight">
-            Powering the Future of Construction<br />with Industry Experts
+        <div style={{ flex: 1, minWidth: 280 }}>
+          <span className="eyebrow tick" style={{ color: "rgba(255,255,255,.55)" }}>We work with</span>
+          <h2 style={{ color: "#fff", marginTop: 16, marginBottom: 24 }}>
+            Powering the Future of Construction with Industry Experts
           </h2>
 
-          {/* Tab buttons */}
-          <div className="flex gap-3 mb-6 flex-wrap">
+          <div style={{ display: "flex", gap: 10, marginBottom: 28, flexWrap: "wrap" }}>
             {tabs.map((t) => (
               <button
                 key={t.id}
                 onClick={() => setActive(t.id)}
-                className={`px-5 py-2 rounded-lg font-semibold text-sm border-none cursor-pointer transition-all ${
-                  active === t.id
-                    ? "bg-[#e03d22] text-white"
-                    : "bg-white text-[#e03d22] hover:bg-gray-100"
-                }`}
+                className={active === t.id ? "btn btn-primary btn-sm" : "btn btn-outline-light btn-sm"}
               >
                 {t.label}
               </button>
             ))}
           </div>
 
-          {/* Tab content */}
-          <div>
-            <h3 className="text-xl font-semibold mb-2">{tab.heading}</h3>
-            <p className="text-white/80 mb-4 text-sm leading-relaxed">{tab.desc}</p>
-            <ul className="list-disc pl-5 mb-6 space-y-2">
-              {tab.points.map((p) => (
-                <li key={p} className="text-white/80 text-sm">{p}</li>
-              ))}
-            </ul>
-            <Link
-              href={tab.href}
-              className="inline-block border border-white text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-white hover:text-[#e03d22] transition-colors"
-            >
-              See more →
-            </Link>
-          </div>
+          <h3 style={{ color: "#fff", fontFamily: "var(--font-display)", fontWeight: 500, fontSize: "var(--text-h3)", marginBottom: 10 }}>{tab.heading}</h3>
+          <p style={{ color: "rgba(255,255,255,.72)", marginBottom: 18, lineHeight: 1.5 }}>{tab.desc}</p>
+          <ul style={{ paddingLeft: 20, marginBottom: 24, display: "flex", flexDirection: "column", gap: 8 }}>
+            {tab.points.map((p) => (
+              <li key={p} style={{ color: "rgba(255,255,255,.66)", fontSize: 14, lineHeight: 1.5 }}>{p}</li>
+            ))}
+          </ul>
+          <Link className="btn btn-outline-light" href="/about">See more →</Link>
         </div>
 
         {/* Right image */}
-        <div className="flex-1 flex justify-center items-center">
-          <Image
-            src={tab.image}
-            alt={tab.label}
-            width={420}
-            height={420}
-            className="object-contain max-w-full"
-            style={{ transition: "opacity 0.4s ease" }}
-          />
+        <div style={{ flex: 1, minWidth: 260, display: "flex", justifyContent: "center" }}>
+          <Image src={tab.image} alt={tab.label} width={420} height={420} style={{ objectFit: "contain", maxWidth: "100%", transition: "opacity .4s" }} />
         </div>
       </div>
     </section>
