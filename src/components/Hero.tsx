@@ -10,7 +10,7 @@ import Link from "next/link";
 
 export function HeroBleed() {
   return (
-    <section className="hero hero-bleed" style={{ minHeight: "min(86vh, 880px)" }}>
+    <section className="hero hero-bleed" style={{ minHeight: "min(58vh, 580px)" }}>
       {/* Left text + right slider split */}
       <div style={{ position: "absolute", inset: 0, display: "flex" }}>
         {/* Dark left half */}
@@ -45,7 +45,7 @@ export function HeroBleed() {
 
       {/* Content overlay */}
       <div className="container" style={{ position: "relative", zIndex: 2, height: "100%", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-        <div style={{ maxWidth: "48%", paddingTop: 80, paddingBottom: 80 }}>
+        <div style={{ maxWidth: "48%", paddingTop: 48, paddingBottom: 48 }}>
           <span className="eyebrow tick" style={{ color: "rgba(255,255,255,.7)", marginBottom: 32, display: "inline-flex" }}>
             Coxwell · Est. 1995
           </span>
