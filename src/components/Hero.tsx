@@ -1,61 +1,70 @@
-import Link from "next/link";
+"use client";
 
-const stats = [
-  { label: "Lifespan", value: "15+ years" },
-  { label: "Warranty", value: "10-year" },
-  { label: "Certifications", value: "LEED · IS 14434" },
-  { label: "Projects", value: "5,200+" },
-];
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="pt-40 pb-24 lg:pt-52 lg:pb-32 px-6 lg:px-10">
-      <div className="max-w-[1280px] mx-auto">
-        <div className="text-center max-w-4xl mx-auto">
-          <p className="label text-[#4a4a47] mb-8">A — Brief</p>
-          <h1 className="font-display text-5xl sm:text-6xl lg:text-[5.5rem] leading-[1.05] text-[#111110] tracking-tight">
-            Daylight is the heart of every space we build.
+    <section className="bg-black text-white pt-16">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-20 flex flex-col lg:flex-row items-center gap-10">
+        {/* Left content */}
+        <div className="flex-1">
+          <h1 className="text-4xl lg:text-5xl font-bold leading-tight mb-5">
+            Roofing &amp; Facade Solutions<br />
+            to Create Iconic and Durable Buildings
           </h1>
-          <p className="mt-8 text-lg lg:text-xl text-[#4a4a47] max-w-2xl mx-auto leading-relaxed">
-            India&apos;s most-specified polycarbonate systems for roofing, atriums, façades, and walkways.
-            Engineered for daylight, durability, and design intent.
+          <p className="text-[#bbb] text-base lg:text-lg max-w-[500px] mb-8 leading-relaxed">
+            Premium polycarbonate sheet, roofing solutions &amp; architectural
+            systems designed for durability, aesthetics, and performance.
           </p>
-
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-            <Link
-              href="/contact"
-              className="px-6 py-3 rounded-full bg-[#111110] text-[#fafaf7] text-sm hover:bg-[#4a4a47] transition-colors"
-            >
-              Get a quote
-            </Link>
-            <Link
-              href="/products"
-              className="px-6 py-3 rounded-full border border-[#111110] text-[#111110] text-sm hover:bg-[#111110] hover:text-[#fafaf7] transition-colors"
-            >
-              Explore products
-            </Link>
-          </div>
+          <Link
+            href="/contact"
+            className="bg-[#e03d22] text-white px-7 py-3 rounded-full font-semibold inline-block hover:bg-[#c32d19] transition-colors"
+          >
+            Get demo with us
+          </Link>
         </div>
 
-        <div className="mt-24 lg:mt-32 grid grid-cols-2 lg:grid-cols-4 border-t border-[#d9d6cc]">
-          {stats.map((stat, i) => (
-            <div
-              key={stat.label}
-              className={`px-6 py-8 ${
-                i < 3 ? "lg:border-r border-[#d9d6cc]" : ""
-              } ${i % 2 === 0 ? "border-r lg:border-r" : ""} ${i < 2 ? "border-b lg:border-b-0" : ""}`}
-            >
-              <p className="label text-[#4a4a47]">{stat.label}</p>
-              <p className="mt-3 font-display text-3xl lg:text-4xl text-[#111110]">{stat.value}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-16 flex items-center justify-center gap-3">
-          <span className="label text-[#4a4a47]">Scroll to begin</span>
-          <span className="w-12 h-px bg-[#d9d6cc]" />
+        {/* Right slider */}
+        <div className="flex-1 w-full">
+          <Swiper
+            modules={[Autoplay, Pagination, Navigation]}
+            loop={true}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            pagination={{ clickable: true }}
+            navigation={true}
+            grabCursor={true}
+            slidesPerView={1}
+            className="hero-swiper rounded-lg overflow-hidden"
+          >
+            {[1, 2, 3, 4, 5].map((i) => (
+              <SwiperSlide key={i} className="relative" style={{ height: "400px" }}>
+                <Image
+                  src={`/images/banner_${i}.png`}
+                  alt={`Coxwell banner ${i}`}
+                  fill
+                  className="object-cover"
+                  priority={i === 1}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
+
+      <style>{`
+        .hero-swiper { height: 400px; }
+        .hero-swiper .swiper-pagination-bullet { background: #fff; opacity: 0.7; }
+        .hero-swiper .swiper-pagination-bullet-active { background: #e03d22; opacity: 1; }
+        .hero-swiper .swiper-button-next,
+        .hero-swiper .swiper-button-prev { color: #fff; }
+        @media (max-width: 900px) { .hero-swiper { height: 280px; } }
+      `}</style>
     </section>
   );
 }

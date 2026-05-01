@@ -1,27 +1,66 @@
-const numbers = [
-  { value: "30+", label: "years of innovation" },
-  { value: "5,200+", label: "projects delivered" },
-  { value: "2,755+", label: "clients served" },
-  { value: "10+", label: "industry awards" },
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
+const counters = [
+  { target: 30, suffix: "+", label: "Years of Experience" },
+  { target: 5200, suffix: "+", label: "Projects Delivered" },
+  { target: 99, suffix: "%", label: "Client Satisfaction" },
 ];
+
+function useCountUp(target: number, active: boolean) {
+  const [value, setValue] = useState(0);
+
+  useEffect(() => {
+    if (!active) return;
+    const duration = 2000;
+    const start = performance.now();
+
+    function update(now: number) {
+      const progress = Math.min((now - start) / duration, 1);
+      setValue(Math.floor(progress * target));
+      if (progress < 1) requestAnimationFrame(update);
+      else setValue(target);
+    }
+
+    requestAnimationFrame(update);
+  }, [active, target]);
+
+  return value;
+}
+
+function CounterBox({ target, suffix, label }: { target: number; suffix: string; label: string }) {
+  const [active, setActive] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const value = useCountUp(target, active);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setActive(true); },
+      { threshold: 0.3 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={ref} className="flex-1 flex flex-col items-center justify-center py-8 border-r border-gray-200 last:border-r-0 px-4">
+      <div className="flex items-baseline gap-1">
+        <span className="text-5xl lg:text-6xl font-bold text-black leading-none">{value}</span>
+        <span className="text-3xl font-semibold text-black">{suffix}</span>
+      </div>
+      <p className="mt-3 text-base font-medium text-black">{label}</p>
+    </div>
+  );
+}
 
 export default function Numbers() {
   return (
-    <section className="py-24 lg:py-32 px-6 lg:px-10 border-t border-[#d9d6cc] bg-[#111110] text-[#fafaf7]">
-      <div className="max-w-[1280px] mx-auto">
-        <div className="max-w-2xl">
-          <p className="label text-[#fafaf7]/60">E — By the Numbers</p>
-          <h2 className="mt-6 font-display text-4xl lg:text-5xl leading-[1.05]">
-            A practice measured in atriums, not impressions.
-          </h2>
-        </div>
-
-        <div className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-px bg-[#fafaf7]/10 border border-[#fafaf7]/10">
-          {numbers.map((n) => (
-            <div key={n.label} className="bg-[#111110] p-8 lg:p-10">
-              <p className="font-display text-5xl lg:text-7xl tracking-tight">{n.value}</p>
-              <p className="mt-4 text-[#fafaf7]/60">{n.label}</p>
-            </div>
+    <section className="bg-white border-b border-gray-200">
+      <div className="max-w-[1200px] mx-auto">
+        <div className="flex flex-col sm:flex-row divide-y sm:divide-y-0 divide-gray-200">
+          {counters.map((c) => (
+            <CounterBox key={c.label} {...c} />
           ))}
         </div>
       </div>

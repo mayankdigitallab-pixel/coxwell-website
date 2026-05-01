@@ -1,11 +1,14 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Brief from "@/components/Brief";
-import Products from "@/components/Products";
-import Applications from "@/components/Applications";
+import RatingBar from "@/components/RatingBar";
 import Numbers from "@/components/Numbers";
-import Featured from "@/components/Featured";
-import CTA from "@/components/CTA";
+import Trusted from "@/components/Trusted";
+import ExpertTabs from "@/components/ExpertTabs";
+import Systems from "@/components/Systems";
+import VideoSection from "@/components/VideoSection";
+import CaseStudies from "@/components/CaseStudies";
+import BlogCards from "@/components/BlogCards";
+import Testimonials from "@/components/Testimonials";
 import Footer from "@/components/Footer";
 import ChatAssistant from "@/components/ChatAssistant";
 
@@ -15,12 +18,15 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <Brief />
-        <Products />
-        <Applications />
+        <RatingBar />
         <Numbers />
-        <Featured />
-        <CTA />
+        <Trusted />
+        <ExpertTabs />
+        <Systems />
+        <VideoSection />
+        <CaseStudies />
+        <BlogCards />
+        <Testimonials />
       </main>
       <Footer />
       <ChatAssistant />
